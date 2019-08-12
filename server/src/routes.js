@@ -1,13 +1,14 @@
+const AuthenticationController = require('./controllers/AuthenticationController')
+const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
+
 module.exports = (app) => {
-    
-    app.get('/status', (req,res) => {
+    app.get('/check', (req,res) => {
         res.send({
-            message: 'hello there'
+            message: 'Hello'
         })
-    })    
-    app.post('/register', (req,res) => {
-        res.send({
-            message: `${req.body.email} ${req.body.password}`
-        })
-    } )
+    })
+    app.post('/register', 
+    AuthenticationControllerPolicy.register,
+    AuthenticationController.register
+    )
 }

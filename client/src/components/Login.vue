@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Register Component</h1>
+    <h1>Login Component</h1>
     <div class="auth__box__container">
       <div class="auth__label">
         <label for="email"></label>
@@ -20,7 +20,7 @@
       </div>
       <div class="error" v-html="error"></div>
       <div class="auth__button">
-        <button @click="register">Register</button>
+        <button @click="login">Login</button>
       </div>
     </div>
   </div>
@@ -36,9 +36,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })

@@ -7,8 +7,13 @@ module.exports = (app) => {
             message: 'Hello'
         })
     })
+    // Registration 
     app.post('/register', 
     AuthenticationControllerPolicy.register,
     AuthenticationController.register
+    )
+    // Log-In
+    app.post('/login',
+    AuthenticationController.login
     )
 }

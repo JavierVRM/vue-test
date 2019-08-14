@@ -1,16 +1,23 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <div v-for="worker in workers" :key="worker.name">
+      {{worker.name}}
+      {{worker.email}}
+    </div>
   </div>
 </template>
 
 <script>
+import WorkersService from '@/services/WorkersService'
 export default {
   name: 'Index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      workers: null
     }
+  },
+  async mounted () {
+    this.workers = (await WorkersService.workers()).data
   }
 }
 </script>

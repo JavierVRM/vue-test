@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-    const Worker = sequelize.define('Worker', {
+    const Intern = sequelize.define('Intern', {
         name: DataTypes.STRING, 
         email: DataTypes.STRING
     })
-    return Worker
+    return Intern
 }

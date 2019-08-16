@@ -1,26 +1,24 @@
 <template>
-  <div>
+  <div class="body__container">
     <h1>Login Component</h1>
     <div class="auth__box__container">
       <div class="auth__label">
-        <label for="email"></label>
+        <label for="email">Email</label>
         <input
           type="email"
           name="email"
-          placeholder="Email"
           v-model="email"/>
       </div>
       <div class="auth__label">
-        <label for="password"></label>
+        <label for="password">Password</label>
         <input
           type="password"
           name="password"
-          placeholder="Password"
           v-model="password"/>
       </div>
       <div class="error" v-html="error"></div>
       <div class="auth__button">
-        <button @click="login">Login</button>
+        <button class="auth__btn" @click="login">Login</button>
       </div>
     </div>
   </div>
@@ -44,6 +42,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'index'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -53,7 +54,4 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .error {
-    color:red
-  }
 </style>

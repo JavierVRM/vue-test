@@ -44,7 +44,6 @@ module.exports = {
           error: 'The user information was incorrect'
         })
       }
-
       
       if (!isPasswordValid) {
         return res.status(403).send({
@@ -60,7 +59,7 @@ module.exports = {
     } catch (err) {
       console.log(err)
       res.status(500).send({
-        error: 'An error has occured trying to log in'
+        error: 'An error occured trying to log in'
       })
     }
   }

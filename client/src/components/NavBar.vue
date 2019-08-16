@@ -1,11 +1,11 @@
 <template>
-    <div class="navbar__container">
+    <div class="navbar__container global__padding">
       <div class="navbar__brand">
         <router-link to="/">
            <h5>VUE TEST</h5>
         </router-link>
       </div>
-      <div v-if='!$store.state.isUserLoggedIn' class="navbar__auth__buttons">
+      <div v-if='!$store.state.isUserLoggedIn' class="navbar__auth__buttons margin__rigth">
         <router-link  to="login">
           <h6>LOGIN</h6>
         </router-link>
@@ -13,16 +13,40 @@
           <h6>CREATE ACCOUNT</h6>
         </router-link>
       </div>
-      <div v-if='$store.state.isUserLoggedIn' class="navbar__auth__buttons">
-        <router-link  v-if='$store.state.isUserLoggedIn' v-on:click.native="logout" to="/">
-          <h6>LOGOUT</h6>
-        </router-link>
+      <div>
+        <b-dropdown v-if='$store.state.isUserLoggedIn' id="dropdown-1" :text="userName" class="m-md-2">
+          <b-dropdown-item>
+            <router-link  to="/workers">
+              <h6>Leaders</h6>
+            </router-link>
+          </b-dropdown-item>
+          <b-dropdown-item>
+            <router-link  to="/interns">
+              <h6>Interns</h6>
+            </router-link>
+          </b-dropdown-item>
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item >
+            <router-link  v-if='$store.state.isUserLoggedIn' v-on:click.native="logout" to="/">
+              <h6>Logout</h6>
+            </router-link>
+          </b-dropdown-item>
+        </b-dropdown>
       </div>
     </div>
 </template>
 
 <script>
 export default {
+  name: 'nav-bar',
+  data: function () {
+    const userEmail = this.$store.state.user.email
+    const arrobaPosition = userEmail.indexOf('@')
+    const userName = userEmail.slice(0, arrobaPosition).toUpperCase()
+    return {
+      userName
+    }
+  },
   methods: {
     logout () {
       this.$store.dispatch('setToken', null)
@@ -38,25 +62,27 @@ export default {
     width: 100%;
     height: 50px;
     display: flex;
+    justify-content: space-between;
     flex-wrap: nowrap;
-    background-color: #773344;
+    /* background-color: #7F8688 ; */
     color: whitesmoke;
   }
   .navbar__brand {
     width: 50%;
     display: flex;
     justify-content: flex-start;
-    margin-left: 20px;
     align-items: center;
   }
   .navbar__auth__buttons {
     width: 50%;
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
     align-items: center;
   }
   #register {
     margin-left: 20px;
+  }
+  h6 {
+    font-size: 14px;
   }
 </style>

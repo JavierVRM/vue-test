@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Interns from '@/components/Interns'
+import Interns from '@/components/Interns/Interns'
+import CreateInterns from '@/components/Interns/CreateIntern'
 import Workers from '@/components/Workers'
 
 Vue.use(Router)
@@ -24,6 +25,11 @@ export default new Router({
       path: '/interns',
       name: 'interns',
       component: Interns
+    },
+    {
+      path: '/interns/create',
+      name: 'create-intern',
+      component: CreateInterns
     },
     {
       path: '/login',

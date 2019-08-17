@@ -10,7 +10,7 @@ module.exports = (app) => {
     app.get('/interns', 
         InternsController.interns
     )
-    app.post('/interns', 
+    app.post('/interns/create', 
         InternsController.createIntern
     )
     // Registration 

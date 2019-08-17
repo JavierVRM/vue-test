@@ -2,6 +2,6 @@ import Api from '@/services/Api'
 
 export default {
   workers () {
-    return Api().get('/workers')
+    return Api().get('workers')
   }
 }

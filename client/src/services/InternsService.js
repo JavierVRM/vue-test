@@ -4,7 +4,7 @@ export default {
   interns () {
     return Api().get('interns')
   },
-  createIntern () {
-    return Api().post('interns')
+  createIntern (intern) {
+    return Api().post('interns/create', intern)
   }
 }

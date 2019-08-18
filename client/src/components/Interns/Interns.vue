@@ -20,7 +20,11 @@
         <div class="body__item item__container" v-for="intern in interns" :key="intern.name">
           <div class="item item__name item__body">{{intern.name}}</div>
           <div class="item item__email item__body"> {{intern.email}}</div>
+          <router-link :to="{name: 'intern', params: {internId: intern.id}}">{{intern.id}}</router-link>
         </div>
+      </div>
+      <div class="create__btn__container">
+        <router-link class="create__btn style__btn" to="/interns/create">ADD A INTERN</router-link>
       </div>
     </div>
   </div>
@@ -35,7 +39,8 @@ export default {
       interns: null,
       sortBy: 'name',
       sortDirection: 'ASC',
-      search: ''
+      search: '',
+      id: ''
     }
   },
   async mounted () {

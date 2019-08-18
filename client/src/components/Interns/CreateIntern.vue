@@ -19,14 +19,13 @@
         </div>
       </div>
        <p v-if="errors.length">
-            <b>Please correct the following error(s):</b>
             <ul>
-            <li v-for="error in errors" :key="error">{{ error }}</li>
+            <li class="error" v-for="error in errors" :key="error">{{ error }}</li>
             </ul>
         </p>
     </div>
      <div class="auth__button">
-        <button class="auth__btn" @click="checkAndCreate">ADD</button>
+        <button class="auth__btn style__btn" @click="checkAndCreate">ADD</button>
       </div>
   </div>
 </template>
@@ -46,7 +45,6 @@ export default {
     checkAndCreate: function (e) {
       this.errors = []
       if (!this.intern.name) {
-        console.log(this.intern.name)
         this.errors.push('Name required.')
       }
       if (!this.intern.email) {

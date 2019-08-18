@@ -10,9 +10,16 @@ module.exports = (app) => {
     app.get('/interns', 
         InternsController.interns
     )
+    app.get('/interns/:internId',
+        InternsController.showIntern
+    )
+    app.delete('/interns/:idIntern',
+        InternsController.deleteIntern
+    )
     app.post('/interns/create', 
         InternsController.createIntern
     )
+    //AUTH
     // Registration 
     app.post('/register', 
         AuthenticationControllerPolicy.register,

@@ -18,7 +18,7 @@
       </div>
       <div class="error" v-html="error"></div>
       <div class="auth__button">
-        <button class="auth__btn" @click="register">Register</button>
+        <button class="auth__btn style__btn" @click="register">Register</button>
       </div>
     </div>
   </div>

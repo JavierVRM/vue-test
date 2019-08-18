@@ -26,12 +26,14 @@ export default {
     color: inherit !important;
     text-decoration: none !important;
   }
+  b-dropdown-item:focus {
+    background-color: inherit !important;
+  }
   h1,h2,h3,h4,h5,h6 {
     margin-bottom: 0 !important;
   }
-  button {
-    background-color: transparent !important;
-    border: none !important;
+  ul {
+    list-style: none;
   }
   router-view {
     margin-top: 50px;
@@ -44,15 +46,14 @@ export default {
     text-align: center;
     color: #dfdede;
     background: rgb(146,157,158);
-    background: linear-gradient(0deg, rgba(146,157,158,1) 0%, rgba(127,134,136,1) 100%);
+    background: linear-gradient(0deg, rgba(31, 31, 33,1) 0%, rgba(63, 63, 66, 1) 100%);
     width: 100vw;
     height: 100vh;
   }
  .error {
-    color:rgb(173, 36, 36);
+    color:rgb(231, 231, 231);
+    background: rgba(218, 17, 17, 0.2);
     margin-bottom: 20px;
-    padding: 5px 0px;
-    text-decoration: underline;
   }
   .body__container {
     margin-top: 50px;
@@ -61,7 +62,36 @@ export default {
     padding-left: 100px;
     padding-right: 100px;
   }
-/* GENERAL NAVBAR */
+/* GENERAL BUTTONS */
+ button {
+    background-color: transparent !important;
+    border: none !important;
+  }
+  button:focus {
+    outline:none;
+  }
+ .style__btn {
+    padding: 2px 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  .style__btn:hover {
+    opacity: 0.9;
+  }
+  .auth__btn {
+    background-color: #F3E367!important;
+    color: rgb(44, 44, 44);
+  }
+  .create__btn__container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .create__btn {
+    background-color: rgb(105, 167, 105)!important;
+    color: rgb(233, 233, 233) !important;
+  }
+/* GENERAL INPUTS */
   label {
     width: 50%;
     text-align: left;
@@ -76,12 +106,6 @@ export default {
   }
   input:focus {
     outline:none;
-  }
-  .auth__btn {
-    background-color: #F3E367!important;
-    padding: 2px 10px;
-    border-radius: 2px;
-    color: rgb(102, 100, 100);
   }
 /* GENERAL FLEX TABLES */
 .flex__table__container {

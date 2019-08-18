@@ -37,6 +37,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'nav-bar',
   data: function () {
@@ -47,15 +48,32 @@ export default {
       userName
     }
   },
+  computed: {
+    getFullPath () {
+      return this.$route.path
+    }
+  },
+  watch: {
+    getFullPath () {
+      this.getData()
+    }
+  },
   methods: {
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
+    },
+    getData () {
+      if (this.$store.state.user) {
+        const userEmail = this.$store.state.user.email
+        const arrobaPosition = userEmail.indexOf('@')
+        const userName = userEmail.slice(0, arrobaPosition).toUpperCase()
+        this.userName = userName
+      }
     }
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .navbar__container {

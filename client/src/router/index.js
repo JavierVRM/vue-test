@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Interns from '@/components/Interns/Interns'
 import CreateInterns from '@/components/Interns/CreateIntern'
 import ViewIntern from '@/components/Interns/ViewIntern'
+import EditIntern from '@/components/Interns/EditIntern'
 import Workers from '@/components/Workers'
 
 Vue.use(Router)
@@ -36,6 +37,11 @@ export default new Router({
       path: '/interns/:internId',
       name: 'intern',
       component: ViewIntern
+    },
+    {
+      path: '/interns/:internId/edit',
+      name: 'edit-intern',
+      component: EditIntern
     },
     {
       path: '/login',

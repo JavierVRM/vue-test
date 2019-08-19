@@ -1,11 +1,12 @@
 
 <template>
-  <div>
+  <div v-if="intern">
     <h1>hello there</h1>
     <div>
       {{intern.name}}
       {{intern.email}}
     </div>
+    <router-link :to="{name: 'edit-intern', params: {internId: intern.id}}">{{intern.id}}</router-link>
     <button v-on:click="deleteIntern(intern.id)">X</button>
   </div>
 </template>

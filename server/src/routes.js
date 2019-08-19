@@ -13,11 +13,14 @@ module.exports = (app) => {
     app.get('/interns/:internId',
         InternsController.showIntern
     )
-    app.delete('/interns/:idIntern',
+    app.delete('/interns/:internId',
         InternsController.deleteIntern
     )
     app.post('/interns/create', 
         InternsController.createIntern
+    )
+    app.put('/interns/:internId',
+        InternsController.editIntern
     )
     //AUTH
     // Registration 

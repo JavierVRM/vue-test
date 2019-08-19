@@ -30,6 +30,21 @@ module.exports = {
       console.log(err) 
     }
   },
+  async editIntern (req, res) {
+    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+    try {
+      await Intern.update(req.body, {
+        where: {
+          id: req.params.internId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: 'an error has occured trying to update the intern data'
+      })
+    }
+  },
   async deleteIntern (req,res) {
     try {
       const intern = await Intern.findOne({

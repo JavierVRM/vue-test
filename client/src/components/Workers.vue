@@ -1,13 +1,19 @@
 <template>
   <div class="body__container">
-    <div class="flex__table__container">
+    <div class="waiting__response__icon" v-if="!workers.length">
+        <font-awesome-icon ref="spinner" icon="spinner" style="color: #dfdede"/>
+    </div>
+    <div v-if="workers.length" class="flex__table__container">
+      <div class="table__title">
+        <h4>Those are all the workers in the company:</h4>
+      </div>
       <div class="flex__table__header">
         <div class="header__item item__container">
           <div class="item item__name item__header">
             <h6>WORKERS</h6>
             <div v-on:click="resortData('name')">
-              <span v-show="sortBy == 'name' && sortDirection == 'ASC'">v</span>
-              <span v-show="sortBy == 'name' && sortDirection == 'DESC'">^</span>
+              <font-awesome-icon class="sort__icon" icon="sort-down" v-show="sortBy == 'name' && sortDirection == 'ASC'"/>
+              <font-awesome-icon class="sort__icon" icon="sort-up"  v-show="sortBy == 'name' && sortDirection == 'DESC'"/>
             </div>
           </div>
           <div class="item item__email item__header">
@@ -73,4 +79,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.waiting__response__icon {
+  font-size: 40px;
+}
 </style>

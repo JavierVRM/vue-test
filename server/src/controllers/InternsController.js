@@ -31,7 +31,6 @@ module.exports = {
     }
   },
   async editIntern (req, res) {
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
     try {
       await Intern.update(req.body, {
         where: {
@@ -49,7 +48,7 @@ module.exports = {
     try {
       const intern = await Intern.findOne({
         where: {
-          id: req.params.idIntern
+          id: req.params.internId
         }
       })
       await intern.destroy()

@@ -46,13 +46,13 @@ export default {
     text-align: center;
     color: #dfdede;
     background: rgb(146,157,158);
-    background: linear-gradient(0deg, rgba(31, 31, 33,1) 0%, rgba(63, 63, 66, 1) 100%);
+    background: linear-gradient(0deg, rgb(48, 48, 51) 0%, rgb(82, 82, 85) 100%);
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
   }
  .error {
     color:rgb(231, 231, 231);
-    background: rgba(218, 17, 17, 0.2);
+    background: rgba(218, 17, 17, 0.5);
     margin-bottom: 20px;
   }
   .body__container {
@@ -91,23 +91,35 @@ export default {
     background-color: rgb(105, 167, 105)!important;
     color: rgb(233, 233, 233) !important;
   }
+  .back__btn {
+    background-color: rgba(255,255,255,0.1);
+  }
+/* GENERAL AUTH*/
+.auth__box__container {
+  width: 50%;
+  margin: 0 auto;
+}
 /* GENERAL INPUTS */
   label {
-    width: 50%;
+    width: 100%;
     text-align: left;
   }
   input {
-    width: 50%;
+    width: 100%;
     margin-bottom: 20px;
     background: none;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     color: whitesmoke;
   }
   input:focus {
     outline:none;
   }
 /* GENERAL FLEX TABLES */
+.table__title {
+  margin-bottom: 40px !important;
+  width: 100%;
+}
 .flex__table__container {
   margin: 0 auto;
   display: flex;
@@ -134,23 +146,23 @@ export default {
 .body__item {
   width: 100%;
   display: flex;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .body__item:nth-child(even) {
   background: rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .item {
   width: 50%;
 }
-.item__name {
-  margin-left: 20px;
-}
 .item__container {
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 5px 20px;
 }
 .item__header {
   display: flex;
   align-items: center;
 }
+.sort__icon {
+    margin-left: 5px;
+  }
 </style>

@@ -2,13 +2,19 @@
 <template>
   <div class="body__container">
     <div class="flex__table__container">
+      <div v-if="interns.length" class="table__title">
+        <h4>Those are all the interns in the company:</h4>
+      </div>
+      <div v-if="!interns.length" class="table__title">
+        <h4>Add some interns!</h4>
+      </div>
       <div class="flex__table__header">
         <div class="header__item item__container">
           <div class="item item__name item__header">
             <h6>INTERNS</h6>
             <div v-on:click="resortData('name')">
-              <span v-show="sortBy == 'name' && sortDirection == 'ASC'">v</span>
-              <span v-show="sortBy == 'name' && sortDirection == 'DESC'">^</span>
+              <font-awesome-icon class="sort__icon" icon="sort-down" v-show="sortBy == 'name' && sortDirection == 'ASC'"/>
+              <font-awesome-icon class="sort__icon" icon="sort-up"  v-show="sortBy == 'name' && sortDirection == 'DESC'"/>
             </div>
           </div>
           <div class="item item__email item__header">
@@ -20,7 +26,9 @@
         <div class="body__item item__container" v-for="intern in interns" :key="intern.name">
           <div class="item item__name item__body">{{intern.name}}</div>
           <div class="item item__email item__body"> {{intern.email}}</div>
-          <router-link :to="{name: 'intern', params: {internId: intern.id}}">{{intern.id}}</router-link>
+          <router-link :to="{name: 'intern', params: {internId: intern.id}}">
+            <font-awesome-icon class="watch__icon" icon="eye"/>
+          </router-link>
         </div>
       </div>
       <div class="create__btn__container">

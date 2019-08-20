@@ -2,7 +2,10 @@
     <div class="navbar__container global__padding">
       <div class="navbar__brand">
         <router-link to="/">
-           <h5>VUE TEST</h5>
+           <div class="navbar__logo">
+             <img src="@/assets/images/logo.png" alt="">
+             <h5>VUE TEST</h5>
+           </div>
         </router-link>
       </div>
       <div v-if='!$store.state.isUserLoggedIn' class="navbar__auth__buttons margin__rigth">
@@ -17,7 +20,7 @@
         <b-dropdown v-if='$store.state.isUserLoggedIn' id="dropdown-1" :text="userName" class="m-md-2">
           <b-dropdown-item>
             <router-link  to="/workers">
-              <h6>Leaders</h6>
+              <h6>Workers</h6>
             </router-link>
           </b-dropdown-item>
           <b-dropdown-item>
@@ -27,7 +30,7 @@
           </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
           <b-dropdown-item >
-            <router-link  v-if='$store.state.isUserLoggedIn' v-on:click.native="logout" to="/">
+            <router-link  v-on:click.native="logout" to="/">
               <h6>Logout</h6>
             </router-link>
           </b-dropdown-item>
@@ -97,10 +100,19 @@ export default {
     justify-content: flex-end;
     align-items: center;
   }
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
   #register {
     margin-left: 20px;
   }
   h6 {
     font-size: 14px;
+  }
+  img {
+    width: 15px;
+    margin-right: 15px;
   }
 </style>

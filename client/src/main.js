@@ -8,8 +8,13 @@ import store from '@/store/store'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-Vue.use(BootstrapVue)
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSortDown, faSortUp, faEye, faEdit, faTrashAlt, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+Vue.use(BootstrapVue)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+library.add(faSortDown, faSortUp, faEye, faEdit, faTrashAlt, faSpinner)
 Vue.config.productionTip = false
 sync(store, router)
 /* eslint-disable no-new */

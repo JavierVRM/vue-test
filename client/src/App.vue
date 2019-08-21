@@ -165,4 +165,26 @@ export default {
 .sort__icon {
     margin-left: 5px;
   }
+/* GLOBAL QUERIES */
+@media (max-width: 767px) {
+  .global__padding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .flex__table__container {
+    width: 100%;
+  }
+  .auth__box__container {
+    width: 100%;
+  }
+  .body__item {
+    flex-wrap: wrap;
+  }
+  .item {
+    width: 100%;
+  }
+  .item__email.item__header {
+    display: none;
+  }
+}
 </style>

@@ -3,7 +3,7 @@
   <div class="body__container">
     <div class="flex__table__container">
       <div v-if="interns.length" class="table__title">
-        <h4>Those are all the interns in the company:</h4>
+        <h4>These are all the interns in the company:</h4>
       </div>
       <div v-if="!interns.length" class="table__title">
         <h4>Add some interns!</h4>
@@ -40,6 +40,8 @@
 
 <script>
 import InternsService from '@/services/InternsService'
+import sortMixin from '../../mixins/sortMixin'
+
 export default {
   name: 'Interns',
   data () {
@@ -55,33 +57,7 @@ export default {
     this.interns = (await InternsService.interns()).data
     this.sortByName()
   },
-  methods: {
-    resortData (by) {
-      if (by === this.sortBy) {
-        if (this.sortDirection === 'ASC') {
-          this.sortDirection = 'DESC'
-        } else {
-          this.sortDirection = 'ASC'
-        }
-      }
-      if (by !== this.sortBy) {
-        this.sortDirection = 'ASC'
-        this.sortBy = by
-      }
-      this.sortByName()
-    },
-    sortByName () {
-      this.interns.sort(function (a, b) {
-        if (this.sortDirection === 'ASC') {
-          return ((a.name === b.name) ? 0 : ((a.name > b.name) ? 1 : -1))
-        }
-
-        if (this.sortDirection === 'DESC') {
-          return ((a.name === b.name) ? 0 : ((a.name < b.name) ? 1 : -1))
-        }
-      }.bind(this))
-    }
-  }
+  mixins: [sortMixin]
 }
 </script>
 

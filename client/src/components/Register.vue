@@ -1,6 +1,6 @@
 <template>
   <div class="body__container">
-    <h1>Register Component</h1>
+    <h3 class="table__title">Sign up</h3>
     <div class="auth__box__container">
       <div class="auth__label">
         <label for="email">Email</label>
@@ -25,6 +25,8 @@
 </template>
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import dispatchAndRedirect from '../mixins/dispatchAndRedirect.js'
+
 export default {
   data () {
     return {
@@ -40,16 +42,13 @@ export default {
           email: this.email,
           password: this.password
         })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-        this.$router.push({
-          name: 'index'
-        })
+        this.dispatch(response)
       } catch (error) {
         this.error = error.response.data.error
       }
     }
-  }
+  },
+  mixins: [dispatchAndRedirect]
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

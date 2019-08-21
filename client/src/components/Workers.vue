@@ -1,11 +1,11 @@
 <template>
   <div class="body__container">
     <div class="waiting__response__icon" v-if="!workers.length">
-        <font-awesome-icon ref="spinner" icon="spinner" style="color: #dfdede"/>
+        <font-awesome-icon icon="spinner" style="color: #dfdede"/>
     </div>
     <div v-if="workers.length" class="flex__table__container">
       <div class="table__title">
-        <h4>Those are all the workers in the company:</h4>
+        <h4>These are all the workers in the company:</h4>
       </div>
       <div class="flex__table__header">
         <div class="header__item item__container">
@@ -33,6 +33,8 @@
 
 <script>
 import WorkersService from '@/services/WorkersService'
+import sortMixin from '../mixins/sortMixin'
+
 export default {
   name: 'Workers',
   data () {
@@ -47,33 +49,7 @@ export default {
     this.workers = (await WorkersService.workers()).data
     this.sortByName()
   },
-  methods: {
-    resortData (by) {
-      if (by === this.sortBy) {
-        if (this.sortDirection === 'ASC') {
-          this.sortDirection = 'DESC'
-        } else {
-          this.sortDirection = 'ASC'
-        }
-      }
-      if (by !== this.sortBy) {
-        this.sortDirection = 'ASC'
-        this.sortBy = by
-      }
-      this.sortByName()
-    },
-    sortByName () {
-      this.workers.sort(function (a, b) {
-        if (this.sortDirection === 'ASC') {
-          return ((a.name === b.name) ? 0 : ((a.name > b.name) ? 1 : -1))
-        }
-
-        if (this.sortDirection === 'DESC') {
-          return ((a.name === b.name) ? 0 : ((a.name < b.name) ? 1 : -1))
-        }
-      }.bind(this))
-    }
-  }
+  mixins: [sortMixin]
 }
 </script>
 

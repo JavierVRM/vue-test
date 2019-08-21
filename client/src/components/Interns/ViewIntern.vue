@@ -6,10 +6,16 @@
         <h4>Seeing: {{intern.name}}</h4>
       </div>
       <div class="header__item item__container">
-        <div class="view__item">Name</div>
-        <div class="view__item">Email</div>
-        <div class="view__item">Since</div>
-        <div class="view__item__actions">
+        <div class="view__item view__item__header">
+          Intern
+        </div>
+        <div class="view__item view__item__header">
+          Email
+        </div>
+        <div class="view__item view__item__header">
+          Since
+        </div>
+        <div class="view__item__actions view__item__header">
           Actions
         </div>
       </div>
@@ -84,5 +90,22 @@ export default {
 }
 button {
   margin-left: 20px;
+}
+@media (max-width: 767px) {
+  .view__item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .view__item__header {
+    margin-bottom: 0;
+  }
+  .view__item__header:not(:first-child) {
+    display: none;
+
+  }
+  .view__item__actions {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

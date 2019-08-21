@@ -1,32 +1,4 @@
 <template>
-  <!-- <div class="body__container">
-    <div class="flex__table__container">
-      <div class="flex__table__header">
-        <div class="header__item item__container">
-          <div class="item item__name item__header">
-            <h6>INTERNS</h6>
-          </div>
-          <div class="item item__email item__header">
-            <h6>EMAIL</h6>
-          </div>
-        </div>
-      </div>
-      <div class="flex__table__body" >
-        <div class="body__item item__container">
-          <input class="item item__name item__body" v-model="intern.name" type="text" name="name">
-          <input class="item item__email item__body" v-model="intern.email" type="email" name="email">
-        </div>
-      </div>
-       <p v-if="errors.length">
-            <ul>
-            <li class="error" v-for="error in errors" :key="error">{{ error }}</li>
-            </ul>
-        </p>
-    </div>
-     <div class="auth__button">
-        <button class="auth__btn style__btn" @click="checkAndCreate">SAVE</button>
-      </div>
-  </div> -->
   <div class="body__container">
     <h3 class="table__title">Editing {{intern.name}}</h3>
     <div class="auth__box__container">
@@ -51,13 +23,15 @@
         </p>
       <div class="auth__button">
         <router-link class="back__btn style__btn" :to="{ path:'./', params: internId}">BACK</router-link>
-        <button class="auth__btn style__btn" @click="checkAndCreate">SAVE</button>
+        <button class="auth__btn style__btn" @click="checkAndEdit">SAVE</button>
       </div>
     </div>
   </div>
 </template>
 <script>
 import InternsService from '@/services/InternsService'
+import checkMixin from '../../mixins/checkMixin'
+
 export default {
   name: 'edit-intern',
   data () {
@@ -74,25 +48,6 @@ export default {
     this.intern = (await InternsService.showIntern(this.internId)).data
   },
   methods: {
-    checkAndCreate: function (e) {
-      this.errors = []
-      if (!this.intern.name) {
-        this.errors.push('Name required.')
-      }
-      if (!this.intern.email) {
-        this.errors.push('Email required.')
-      } else if (!this.validEmail(this.intern.email)) {
-        this.errors.push('Valid email required.')
-      }
-      if (!this.errors.length) {
-        this.editIntern()
-      }
-      e.preventDefault()
-    },
-    validEmail: function (email) {
-      let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    },
     async editIntern () {
       try {
         await InternsService.editIntern(this.intern)
@@ -106,7 +61,8 @@ export default {
         console.log(err)
       }
     }
-  }
+  },
+  mixins: [checkMixin]
 }
 </script>
 <style scoped>
